@@ -1,0 +1,15 @@
+[ {
+  "identifier" : "testUser",
+  "password" : "password",
+  "authToken" : "AuthTokenMotherBoardToken",
+  "hardwareSerialNumber" : "3123 dsadqw 132",
+  "embeddedFaceVector" : null,
+  "encryptionData" : null
+}, {
+  "identifier" : "myUser",
+  "password" : "password",
+  "authToken" : null,
+  "hardwareSerialNumber" : null,
+  "embeddedFaceVector" : null,
+  "encryptionData" : null
+} ]
