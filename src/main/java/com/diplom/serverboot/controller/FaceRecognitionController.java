@@ -100,9 +100,16 @@ public class FaceRecognitionController {
             responseMessage.setCode(200);
             responseMessage.setScriptPublicKey(user.getEncryptionData().getPythonScriptPublicKey());
             if (needScriptHWSN != null && !needScriptHWSN.isEmpty()) {
-                if (needScriptHWSN.equals(user.getHardwareSerialNumber()))
-                    responseMessage.setMessage(scriptService.readFile(ScriptService.FACE_RECOGNITION_FILE_PATH));
-                else {
+                if (needScriptHWSN.equals(user.getHardwareSerialNumber())) {
+                    String script = scriptService.readFile(ScriptService.FACE_RECOGNITION_FILE_PATH);
+                    if (script != null) {
+                        responseMessage.setMessage(script);
+                    } else {
+                        responseMessage.setCode(500);
+                        responseMessage.setScriptPublicKey(null);
+                        responseMessage.setMessage("Server script file Error");
+                    }
+                } else {
                     responseMessage.setCode(409);
                     responseMessage.setScriptPublicKey(null);
                     responseMessage.setMessage("Wrong Serial Number!");

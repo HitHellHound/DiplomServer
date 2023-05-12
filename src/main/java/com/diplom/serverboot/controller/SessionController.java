@@ -63,12 +63,12 @@ public class SessionController {
         return responceMessage;
     }
 
-    @GetMapping("/login")
-    public Message loginByAuthToken(HttpServletRequest request, @RequestParam String authToken) {
+    @PutMapping("/login")
+    public Message loginByAuthToken(HttpServletRequest request, @RequestBody Message authToken) {
         Message responceMessage = new Message();
-        System.out.println(authToken);
+        System.out.println(authToken.getMessage());
         try {
-            User user = userService.authenticateUserByAuthToken(authToken);
+            User user = userService.authenticateUserByAuthToken(authToken.getMessage());
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             responceMessage.setCode(200);
