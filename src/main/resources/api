@@ -2,7 +2,7 @@
     "base" : "http://localhost:8080",
     "session" : "/session",
     "login" : "/login",
-    "notify" : "/notify"
+    "notify" : "/notify",
     "registration" : "/registration",
     "recognition" : "/recognition"
 }
